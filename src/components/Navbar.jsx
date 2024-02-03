@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="h-[70px] flex bg-slate-600">
       <div className="container mx-auto w-[90%] flex justify-start items-center px-2">
         <div className="flex-[30%]">
-          <h1 className="text-4xl font-bold">Fashion Hub</h1>
+          <h1 className="text-4xl font-bold">ShopVista</h1>
         </div>
         <ul className="flex flex-[60%] justify-start gap-40 text-lg  font-semibold">
           <li className="hover:text-white">

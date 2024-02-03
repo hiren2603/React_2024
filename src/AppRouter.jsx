@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout.jsx";
-import { Products, Login, Contact, Users } from "./Pages/index.js";
+import { Products, Login, Contact, Users, Private } from "./Pages/index.js";
 import { fetchProducts, fetchUsers } from "./api/index.js";
 
 export const router = createBrowserRouter([
@@ -19,8 +19,9 @@ export const router = createBrowserRouter([
       },
       {
         path: "users",
-        element: <Users />,
-        loader: fetchUsers,
+        element: <Private />,
+
+        children: [{ path: "", element: <Users />, loader: fetchUsers }],
       },
       {
         path: "contact",
