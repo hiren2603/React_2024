@@ -2,6 +2,7 @@ import Products  from "./Products";
 import Login from "./Login"
 import Users from "./Users"
 import Contact from "./Contact";
-import Private from "./Private";
+import PrivateRoutes from "./PrivateRoutes";
+import Cart from "./Cart";
 
-export { Products, Login, Private, Users, Contact }
+export { Products, Login, PrivateRoutes, Users, Contact, Cart }

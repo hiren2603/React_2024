@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import { useLoaderData } from "react-router-dom";
-import { useProducts } from "../context";
 import { Product } from "../components";
 
 function Products() {

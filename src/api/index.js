@@ -1,4 +1,5 @@
 import { api } from "../conf"
+import { useAuth } from "../hooks/useAuth"
 
    export const fetchProducts = async()=>{
     try{
@@ -31,4 +32,24 @@ import { api } from "../conf"
     }catch(error){
         return error
     }
+   }
+
+   export const getCurrentUser = async()=>{
+    const token = await JSON.parse(localStorage.getItem("token"));
+   if(token){
+    try{
+        const response = await fetch(`${api}/auth/me`,{
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            }
+        })
+        return response.status
+    }catch(error){
+        return error
+    }
+   }else{
+     return "Please Login"
+   }
+        
+    
    }

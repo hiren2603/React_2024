@@ -1,17 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdOutlineLogin } from "react-icons/md";
 import { Button, Input } from "../components";
 import { LoginUser } from "../api";
-import { useNavigate } from "react-router-dom";
 import { ImSpinner9 } from "react-icons/im";
+import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
+  const { setAuth, auth } = useAuth();
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+
   const [user, setUser] = useState({
     username: "",
     password: "",
   });
+
+  const [loading, setLoading] = useState(false);
+
   const [errors, setErrors] = useState({
     username: "",
     password: "",
@@ -33,7 +38,7 @@ function Login() {
     if (name === "username" && value.length < 4) {
       setErrors({ ...errors, username: "Username is too short!" });
       console.log(errors);
-    } else if (name === "password" && value.length < 5) {
+    } else if (name === "password" && value.length < 4) {
       setErrors({ ...errors, password: "Password is too short!" });
     } else {
       setErrors({ username: "", password: "" });
@@ -46,11 +51,12 @@ function Login() {
     const { username, password } = user;
     if (username && password) {
       const user = await LoginUser(username, password);
-      console.log(user);
       if (!user.message) {
         localStorage.setItem("token", JSON.stringify(user.token));
+        console.log(user.token);
         setUser({ username: "", password: "" });
         setLoading(false);
+        setAuth(true);
         navigate("/users");
       } else {
         setLoading(false);

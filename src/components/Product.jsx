@@ -1,5 +1,4 @@
 import React from "react";
-import { useProducts } from "../context";
 import Rating from "./Rating";
 
 function Product({ product }) {
