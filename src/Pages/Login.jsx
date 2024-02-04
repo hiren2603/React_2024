@@ -94,6 +94,7 @@ function Login() {
           onChange={handleChange}
           onBlur={handleBlur}
           errorText={errors.username}
+          cName="w-full"
         />
         <Input
           type="password"
