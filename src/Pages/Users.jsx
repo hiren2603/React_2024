@@ -1,21 +1,25 @@
 import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { User } from "../components";
-import { MdSkipPrevious, MdSkipNext } from "react-icons/md";
-import { IoCaretBackSharp } from "react-icons/io5";
+import {
+  SkipNextIcon,
+  SkipPrevIcon,
+  NextIcon,
+  PrevIcon,
+} from "../assets/icons";
 
 const Users = () => {
   const users = useLoaderData();
-  console.log(users);
+  // console.log(users);
   return (
-    <div className="container mx-auto w-[90%] flex flex-wrap h-full justify-center gap-8 mt-5">
-      <table className=" table-auto w-full">
-        <caption class="caption-top text-gray-300 text-4xl py-2">
+    <div className="container mx-auto w-[90%] mt-5">
+      <table className=" table-auto w-full border-spacing-1 border-separate">
+        <caption className="caption-top text-gray-300 text-4xl py-2">
           All Users
         </caption>
         <thead>
-          <tr className="border border-gray-500 justify-center bg-gray-600 h-16">
-            <th className="w-20">Id</th>
+          <tr className="border border-gray-500 bg-gray-600 h-16">
+            <th className="w-16">Id</th>
             <th>Avatar</th>
             <th>Fullname</th>
             <th>Gender</th>
@@ -45,33 +49,19 @@ const Users = () => {
               <div className="flex justify-center items-center space-x-4">
                 {/* You can use buttons or links for pagination */}
                 <button className="px-3 py-3 bg-blue-500 text-white rounded-md">
-                  <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
-                    <path
-                      d="M0.5 12V0H2.5V12H0.5ZM13.5 12L4.5 6L13.5 0V12Z"
-                      fill="white"
-                    />
-                  </svg>
+                  <SkipPrevIcon />
                 </button>
                 <button className="px-3 py-3 bg-blue-500 text-white rounded-md">
-                  <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
-                    <path d="M9.5 12L0.5 6L9.5 0V12Z" fill="white" />
-                  </svg>
+                  <PrevIcon />
                 </button>
                 <span className="text-sm">
                   Page: {1} of {5}
                 </span>
                 <button className="px-3 py-3 bg-blue-500 text-white rounded-md">
-                  <svg width="10" height="12" viewBox="0 0 10 12" fill="none">
-                    <path d="M0.5 0L9.5 6L0.5 12L0.5 0Z" fill="white" />
-                  </svg>
+                  <NextIcon />
                 </button>
                 <button className="px-3 py-3 bg-blue-500 text-white rounded-md">
-                  <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
-                    <path
-                      d="M13.5 0L13.5 12H11.5L11.5 0H13.5ZM0.5 0L9.5 6L0.5 12L0.5 0Z"
-                      fill="white"
-                    />
-                  </svg>
+                  <SkipNextIcon />
                 </button>
               </div>
             </td>

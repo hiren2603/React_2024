@@ -9,7 +9,6 @@ const Input = ({
   onBlur,
   palceholder,
   errorText,
-  cName,
 }) => {
   return (
     <div>
@@ -17,7 +16,7 @@ const Input = ({
         placeholder={palceholder}
         type={type}
         name={name}
-        className={`${cName} p-3
+        className={`w-full p-3
           text-black 
         rounded-md bg-gray-200 
         border-none`}
