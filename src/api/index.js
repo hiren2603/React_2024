@@ -43,7 +43,7 @@ import { useAuth } from "../hooks/useAuth"
         const response = await fetch(`${api}/auth/me`,{
             method: "GET",
             headers: {
-                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvSmVhbm5lLnBuZz9zZXQ9c2V0NCIsImlhdCI6MTcwNzEzMjYxNCwiZXhwIjoxNzA3MTM5ODE0fQ.wTkw_oBcvJdLbcfB5sZ2HAmjnP1YB4sPz8x0tENNknM'
+                'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTUsInVzZXJuYW1lIjoia21pbmNoZWxsZSIsImVtYWlsIjoia21pbmNoZWxsZUBxcS5jb20iLCJmaXJzdE5hbWUiOiJKZWFubmUiLCJsYXN0TmFtZSI6IkhhbHZvcnNvbiIsImdlbmRlciI6ImZlbWFsZSIsImltYWdlIjoiaHR0cHM6Ly9yb2JvaGFzaC5vcmcvSmVhbm5lLnBuZz9zZXQ9c2V0NCIsImlhdCI6MTcwNzE0MDUxMiwiZXhwIjoxNzA3MTQ3NzEyfQ.6zxVUiV2YVK32Mp2Sdks_RtepOlqOzRh8PomiQWGakM'
             }
         })
         return response.status
@@ -54,3 +54,13 @@ import { useAuth } from "../hooks/useAuth"
      return "Please Login"
    }
 }
+
+export const pagination = async()=>{
+    try {
+        const response = fetch(`${api}/users?limit=${limit}&skip=${skip}`)
+        return response.json()
+    } catch (error) {
+        return error
+    }
+
+} 

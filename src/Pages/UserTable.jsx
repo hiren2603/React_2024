@@ -5,7 +5,7 @@ import { Input, TableHead, User } from "../components";
 import TableBody from "../components/TableBody";
 import TableFooter from "../components/TableFooter";
 
-const Users = () => {
+const UserTable = () => {
   const users = useLoaderData();
   const [sortedUsers, setSortedUsers] = useState(users.users);
   const [sortOrder, setSortOrder] = useState("asc");
@@ -38,4 +38,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default UserTable;

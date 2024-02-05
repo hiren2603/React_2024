@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "./Input";
 import {
   SkipNextIcon,
@@ -7,13 +7,31 @@ import {
   PrevIcon,
 } from "../assets/icons";
 function TableFooter() {
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const handleLimitChange = (e) => {
+    setRowsPerPage(e.target.value);
+  };
+
   return (
     <tfoot>
       <tr className="border border-gray-500 justify-center items-center bg-gray-600 h-16">
         <td colSpan={6} className="text-left">
           <div className="flex items-center space-x-4 pl-4">
             <span className="text-sm">Records per Page:</span>
-            <Input type="number" customClass="w-[70px] py-2" />
+            <select
+              value={rowsPerPage}
+              onChange={(e) => handleLimitChange(e)}
+              className="p-2
+                    text-black 
+                    rounded-md bg-gray-200 
+                    outline-none
+                    border-none"
+            >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
           </div>
         </td>
         <td colSpan={2} className="text-right">
