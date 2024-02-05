@@ -10,6 +10,8 @@ import { fetchProducts, fetchUsers, getCurrentUser } from "./api";
 import { Login, Users, Products, PrivateRoutes, Contact, Cart } from "./Pages";
 import Layout from "./Layout.jsx";
 
+const token = localStorage.getItem("token");
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>

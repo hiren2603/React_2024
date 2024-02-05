@@ -9,6 +9,7 @@ const Input = ({
   onBlur,
   palceholder,
   errorText,
+  customClass,
 }) => {
   return (
     <div>
@@ -16,10 +17,10 @@ const Input = ({
         placeholder={palceholder}
         type={type}
         name={name}
-        className={`w-full p-3
+        className={`p-3
           text-black 
         rounded-md bg-gray-200 
-        border-none`}
+        border-none ${customClass}`}
         value={value}
         onChange={onChange}
         onBlur={onBlur}

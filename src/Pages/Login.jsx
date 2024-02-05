@@ -53,7 +53,6 @@ function Login() {
       const user = await LoginUser(username, password);
       if (!user.message) {
         localStorage.setItem("token", JSON.stringify(user.token));
-        console.log(user.token);
         setUser({ username: "", password: "" });
         setLoading(false);
         setAuth(true);
@@ -94,7 +93,7 @@ function Login() {
           onChange={handleChange}
           onBlur={handleBlur}
           errorText={errors.username}
-          cName="w-full"
+          customClass="w-full"
         />
         <Input
           type="password"
@@ -104,6 +103,7 @@ function Login() {
           onBlur={handleBlur}
           onChange={handleChange}
           errorText={errors.password}
+          customClass="w-full"
         />
       </div>
       <div className="w-full flex justify-center">

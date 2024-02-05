@@ -1,72 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLoaderData } from "react-router-dom";
-import { User } from "../components";
-import {
-  SkipNextIcon,
-  SkipPrevIcon,
-  NextIcon,
-  PrevIcon,
-} from "../assets/icons";
+import { Input, TableHead, User } from "../components";
+
+import TableBody from "../components/TableBody";
+import TableFooter from "../components/TableFooter";
 
 const Users = () => {
   const users = useLoaderData();
-  // console.log(users);
+  const [sortedUsers, setSortedUsers] = useState(users.users);
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [column, setColumn] = useState("id");
+
+  // shorting functionality
+
   return (
-    <div className="container mx-auto w-[90%] mt-5">
-      <table className=" table-auto w-full border-spacing-1 border-separate">
+    <div className="container mx-auto w-[90%] mt-5 max-h-[80vh]">
+      <table className="table-auto w-full border-collapse border border-gray-400">
         <caption className="caption-top text-gray-300 text-4xl py-2">
           All Users
         </caption>
-        <thead>
-          <tr className="border border-gray-500 bg-gray-600 h-16">
-            <th className="w-16">Id</th>
-            <th>Avatar</th>
-            <th>Fullname</th>
-            <th>Gender</th>
-            <th>DOB</th>
-            <th>Email</th>
-            <th>Company</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.users.map((user) => (
-            <User user={user} key={user.id} />
+        <TableHead
+          column={column}
+          sortOrder={sortOrder}
+          setSortOrder={setSortOrder}
+          setColumn={setColumn}
+          sortedUsers={sortedUsers}
+          setSortedUsers={setSortedUsers}
+        />
+        <tbody className="overflow-y-auto w-full">
+          {sortedUsers.map((user) => (
+            <TableBody user={user} key={user.id} />
           ))}
         </tbody>
-        <tfoot>
-          <tr className="border border-gray-500 justify-center items-center bg-gray-600 h-16">
-            <td colSpan={6} className="text-left">
-              <div className="flex items-center space-x-4">
-                <span className="text-sm">Records per Page:</span>
-                <input
-                  type="number"
-                  className="w-16 px-2 py-1 border rounded-md"
-                  // Add necessary props and state for handling input value
-                />
-              </div>
-            </td>
-            <td colSpan={2} className="text-right">
-              <div className="flex justify-center items-center space-x-4">
-                {/* You can use buttons or links for pagination */}
-                <button className="px-3 py-3 bg-blue-500 text-white rounded-md">
-                  <SkipPrevIcon />
-                </button>
-                <button className="px-3 py-3 bg-blue-500 text-white rounded-md">
-                  <PrevIcon />
-                </button>
-                <span className="text-sm">
-                  Page: {1} of {5}
-                </span>
-                <button className="px-3 py-3 bg-blue-500 text-white rounded-md">
-                  <NextIcon />
-                </button>
-                <button className="px-3 py-3 bg-blue-500 text-white rounded-md">
-                  <SkipNextIcon />
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tfoot>
+        <TableFooter />
       </table>
     </div>
   );

@@ -11,8 +11,8 @@ const User = ({ user }) => {
     .replace(/(\d+)(th|st|nd|rd)/, "$1");
   return (
     <>
-      <tr className="bg-gray-600 table-row border-gray-500 border">
-        <td className="text-center">{user.id}</td>
+      <tr className="bg-gray-600">
+        <td className=" w-20 text-center">{user.id}</td>
         <td className="flex justify-center items-center h-16">
           <img
             src={user.image}
@@ -26,7 +26,7 @@ const User = ({ user }) => {
         <td className="text-center">{user.gender}</td>
         <td className="px-4">{date}</td>
         <td className="px-4">{user.email}</td>
-        <td className="px-4">{user.company.name}</td>
+        <td className="px-4">{user.university}</td>
       </tr>
     </>
   );
