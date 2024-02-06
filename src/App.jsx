@@ -37,7 +37,6 @@ function App() {
     username: "",
     password: "",
   });
-  const [auth, setAuth] = useState(false);
   const [token, setToken] = useState("");
 
   useEffect(() => {
@@ -50,6 +49,7 @@ function App() {
     localStorage.setItem("token", JSON.stringify(result.token));
     setUser({ username: "", password: "" });
     setLoading(false);
+    setAuth(true);
     return result;
   };
 

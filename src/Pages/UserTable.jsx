@@ -8,7 +8,7 @@ import { useAuth } from "../hooks/useAuth";
 import { Loading } from "../assets/icons";
 
 const UserTable = () => {
-  const { loading, setLoading } = useAuth();
+  const { loading, setLoading, auth } = useAuth();
   const [limit, setLimit] = useState(5);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -20,6 +20,7 @@ const UserTable = () => {
   // shorting functionality
 
   useEffect(() => {
+    console.log(auth);
     const getUsers = async () => {
       setLoading(true);
       const result = await fetchUsers(limit, offset);

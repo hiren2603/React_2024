@@ -8,14 +8,16 @@ import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { setAuth, auth } = useAuth();
+  console.log(auth);
   const navigate = useNavigate();
   useEffect(() => {
-    const tkn = localStorage.getItem("token");
-    if (tkn) {
+    console.log("run from login...");
+    const token = localStorage.getItem("token");
+    if (token) {
       setAuth(true);
       navigate("/users");
     }
-  }, []);
+  }, [auth]);
 
   const [user, setUser] = useState({
     username: "",
@@ -59,9 +61,9 @@ function Login() {
       const user = await LoginUser(username, password);
       if (!user.message) {
         localStorage.setItem("token", JSON.stringify(user.token));
+        setAuth(true);
         setUser({ username: "", password: "" });
         setLoading(false);
-        setAuth(true);
         navigate("/users");
       } else {
         setLoading(false);
