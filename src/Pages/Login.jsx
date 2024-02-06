@@ -9,6 +9,13 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const { setAuth, auth } = useAuth();
   const navigate = useNavigate();
+  useEffect(() => {
+    const tkn = localStorage.getItem("token");
+    if (tkn) {
+      setAuth(true);
+      navigate("/users");
+    }
+  }, []);
 
   const [user, setUser] = useState({
     username: "",
@@ -37,7 +44,6 @@ function Login() {
     const { name, value } = e.target;
     if (name === "username" && value.length < 4) {
       setErrors({ ...errors, username: "Username is too short!" });
-      console.log(errors);
     } else if (name === "password" && value.length < 4) {
       setErrors({ ...errors, password: "Password is too short!" });
     } else {

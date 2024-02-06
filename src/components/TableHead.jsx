@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { UpIcon } from "../assets/icons";
+import { tableColumns } from "../constants";
 
 function TableHead({
   column,
@@ -44,9 +45,43 @@ function TableHead({
   }, [column]);
 
   return (
-    <thead>
+    <thead className="">
       <tr className="bg-gray-600 h-16 border border-gray-400">
-        <th className="text-center font-medium tracking-wider px-4 py-2">
+        {tableColumns.map((col) => (
+          <th
+            key={col.id}
+            className="text-center font-medium tracking-wider px-4 py-2"
+          >
+            <div
+              className="flex justify-center items-center space-x-2"
+              onClick={
+                col.sortable ? () => sortData(col.name.toLowerCase()) : null
+              }
+            >
+              <span>{col.name}</span>
+              {col.sortable && (
+                <span>
+                  <UpIcon
+                    isRotated={
+                      sortOrder === "desc" && column === col.name.toLowerCase()
+                        ? true
+                        : false
+                    }
+                  />
+                </span>
+              )}
+            </div>
+          </th>
+        ))}
+      </tr>
+    </thead>
+  );
+}
+
+export default TableHead;
+
+{
+  /* <th className="text-center font-medium tracking-wider px-4 py-2">
           <div
             className="flex justify-center items-center space-x-2"
             onClick={() => sortData("id")}
@@ -138,10 +173,5 @@ function TableHead({
               />
             </span>
           </div>
-        </th>
-      </tr>
-    </thead>
-  );
+        </th> */
 }
-
-export default TableHead;

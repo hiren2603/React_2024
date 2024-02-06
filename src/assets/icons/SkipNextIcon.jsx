@@ -1,6 +1,6 @@
 import React from "react";
 
-function SkipNextIcon() {
+function SkipNextIcon({ onClick }) {
   return (
     <svg width="14" height="12" viewBox="0 0 14 12" fill="none">
       <path

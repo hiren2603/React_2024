@@ -7,6 +7,7 @@ import { useAuth } from "../hooks/useAuth";
 
 const Navbar = () => {
   const { auth, logout } = useAuth();
+  console.log(auth);
   return (
     <nav className="h-[70px] flex bg-slate-600">
       <div className="container mx-auto w-[90%] flex justify-start items-center px-2">
@@ -17,9 +18,6 @@ const Navbar = () => {
           <li className="hover:text-white">
             <Link to="/">Home</Link>
           </li>
-          {/* <li className="hover:text-white">
-            <a href="">Products</a>
-          </li> */}
           <li className="hover:text-white">
             <Link to="/users">Users</Link>
           </li>
@@ -33,17 +31,16 @@ const Navbar = () => {
               <FaCartShopping className="text-xl hover: text-white" />
             </Link>
           </li>
-          {!auth && (
+          {auth ? (
+            <li onClick={logout}>
+              <Link to="/">
+                <CgLogOff className="text-xl hover: text-white" />
+              </Link>
+            </li>
+          ) : (
             <li>
               <Link to="/login">
                 <FaUser className="text-xl hover: text-white" />
-              </Link>
-            </li>
-          )}
-          {auth && (
-            <li onClick={logout}>
-              <Link to="/login">
-                <CgLogOff className="text-xl hover: text-white" />
               </Link>
             </li>
           )}
