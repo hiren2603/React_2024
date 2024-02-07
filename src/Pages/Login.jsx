@@ -4,20 +4,19 @@ import { Button, Input } from "../components";
 import { LoginUser } from "../api";
 import { ImSpinner9 } from "react-icons/im";
 import { useAuth } from "../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 function Login() {
-  const { setAuth, auth } = useAuth();
-  console.log(auth);
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
+  const auth = useLoaderData();
+
   useEffect(() => {
-    console.log("run from login...");
-    const token = localStorage.getItem("token");
-    if (token) {
+    if (auth) {
       setAuth(true);
       navigate("/users");
     }
-  }, [auth]);
+  }, []);
 
   const [user, setUser] = useState({
     username: "",

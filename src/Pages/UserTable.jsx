@@ -20,7 +20,6 @@ const UserTable = () => {
   // shorting functionality
 
   useEffect(() => {
-    console.log(auth);
     const getUsers = async () => {
       setLoading(true);
       const result = await fetchUsers(limit, offset);

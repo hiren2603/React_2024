@@ -6,7 +6,12 @@ import {
   RouterProvider,
   Route,
 } from "react-router-dom";
-import { fetchProducts, fetchUsers, getCurrentUser } from "./api";
+import {
+  fetchProducts,
+  fetchUsers,
+  getCurrentUser,
+  getProductDetails,
+} from "./api";
 import {
   Login,
   Products,
@@ -14,6 +19,7 @@ import {
   Contact,
   Cart,
   UserTable,
+  ProductDetails,
 } from "./Pages";
 import Layout from "./Layout.jsx";
 
@@ -21,7 +27,12 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route path="/" loader={fetchProducts} element={<Products />} />
-      <Route path="/login" element={<Login />} />
+      <Route
+        path="/product/:id"
+        element={<ProductDetails />}
+        loader={({ params }) => getProductDetails(params.id)}
+      />
+      <Route path="/login" element={<Login />} loader={getCurrentUser} />
       <Route element={<PrivateRoutes />} loader={getCurrentUser}>
         <Route path="users" element={<UserTable />} />
         <Route path="/cart" element={<Cart />} />
@@ -37,12 +48,14 @@ function App() {
     username: "",
     password: "",
   });
-  const [token, setToken] = useState("");
+  const [token, setToken] = useState(
+    JSON.parse(localStorage.getItem("token")) || ""
+  );
 
-  useEffect(() => {
-    console.log("token fetching...");
-    setToken(localStorage.getItem("token"));
-  }, []);
+  // useEffect(() => {
+  //   console.log(`token: ${token}`);
+  //   setToken(localStorage.getItem("token"));
+  // }, []);
   const login = async () => {
     const response = await LoginUser(username, password);
     const result = response.json();

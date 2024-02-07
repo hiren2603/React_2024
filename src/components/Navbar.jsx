@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaUser } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { CgLogOff } from "react-icons/cg";
-import { FaCartShopping } from "react-icons/fa6";
+import { CartIcon, UserIcon } from "../assets/icons";
 import { useAuth } from "../hooks/useAuth";
 
 const Navbar = () => {
@@ -24,10 +24,10 @@ const Navbar = () => {
             <Link to="/contact">Contact</Link>
           </li>
         </ul>
-        <ul className="flex justify-between w-[5%]">
+        <ul className="flex justify-between items-center w-[7%]">
           <li>
             <Link to="/cart">
-              <FaCartShopping className="text-xl hover: text-white" />
+              <CartIcon />
             </Link>
           </li>
           {auth ? (
@@ -39,7 +39,7 @@ const Navbar = () => {
           ) : (
             <li>
               <Link to="/login">
-                <FaUser className="text-xl hover: text-white" />
+                <UserIcon />
               </Link>
             </li>
           )}

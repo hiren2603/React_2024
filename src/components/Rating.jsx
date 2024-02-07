@@ -5,9 +5,9 @@ const StarIcon = ({ filled }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={`h-5 w-5 ${filled ? "text-yellow-500" : "text-gray-400"}`}
+      className={`h-5 w-5 ${filled ? "fill-yellow-500" : "fill-gray-400"}`}
       viewBox="0 0 20 20"
-      fill="currentColor"
+      fill={`${filled ? "fill-yellow-500" : "fill-gray-400"}`}
     >
       <path
         fillRule="evenodd"
@@ -23,11 +23,15 @@ const Rating = ({ rating }) => {
 
   for (let i = 1; i <= 5; i++) {
     if (i <= Math.floor(rating)) {
-      starComponents.push(<FaStar key={i} />);
-    } else if (i - rating >= 0.5) {
-      starComponents.push(<FaStarHalf key={i} />);
+      starComponents.push(
+        <FaStar key={i} className="fill-yellow-500 stroke-yellow-500" />
+      );
+    } else if (i - rating >= 0.5 && i - rating < 1) {
+      starComponents.push(
+        <FaStarHalf key={i} className="fill-yellow-500 stroke-yellow-500" />
+      );
     } else {
-      starComponents.push(<FaRegStar key={i} />);
+      starComponents.push(<FaRegStar key={i} className="fill-gray-300" />);
     }
   }
 

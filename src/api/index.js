@@ -7,9 +7,19 @@ import { useAuth } from "../hooks/useAuth"
         const response = await fetch(`${api}/products`)
         return response.json()
     }catch(error){
-        console.log(error)
+        return error
     }
-   } 
+   }
+   
+   export const getProductDetails = async(id)=>{
+    console.log(id)
+    try {
+        const response = await fetch(`${api}/products/${id}`)
+        return response.json()
+    } catch (error) {
+        return error
+    }
+   }
    
    export const fetchUsers = async(limit, skip)=>{
     const token = JSON.parse(localStorage.getItem('token')); 
@@ -54,7 +64,7 @@ import { useAuth } from "../hooks/useAuth"
         })
         return response.ok
     }catch(error){
-        throw new Error(error)
+        return error
     }
    }else{
      return false
