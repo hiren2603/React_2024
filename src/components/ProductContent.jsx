@@ -6,6 +6,8 @@ function ProductContent({ product }) {
     (product.discountPercentage / 100) * (product.price * 83) +
       product.price * 83
   );
+  let price = product.price * 83;
+  price = price.toLocaleString();
   return (
     <div className=" w-full text-white">
       <div className="flex pl-4">
@@ -17,10 +19,10 @@ function ProductContent({ product }) {
       </div>
       <div className="flex items-end space-x-2 p-4">
         <span className="font-semibold text-2xl">&#8377;</span>
-        <h1 className="text-4xl">{product.price * 83}</h1>
+        <h1 className="text-4xl">{price}</h1>
         <h2 className="line-through text-lg text-gray-300">
           <span className="text-xl">&#8377;</span>
-          {actualPrice}
+          {actualPrice.toLocaleString()}
         </h2>
         <p className="font-semibold text-md space-x-2">
           <span className="text-green-700">{product.discountPercentage}</span> %

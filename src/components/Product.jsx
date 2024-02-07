@@ -14,7 +14,7 @@ function Product({ product }) {
         {/* <p>{product.category}</p> */}
         <h1 className="text-2xl">
           <span className="text-2xl"> &#8377; </span>
-          {product.price * 83}
+          {(product.price * 83).toLocaleString()}
         </h1>
         <div className="pb-4">
           <Rating rating={product.rating} />

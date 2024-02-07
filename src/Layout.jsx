@@ -6,7 +6,9 @@ const Layout = () => {
   return (
     <>
       <Navbar />
-      <Outlet />
+      <div className="container mx-auto w-[90vw] flex flex-wrap h-full justify-start gap-14 mt-5">
+        <Outlet />
+      </div>
     </>
   );
 };

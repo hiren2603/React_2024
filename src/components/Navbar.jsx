@@ -9,7 +9,7 @@ const Navbar = () => {
   const { auth, logout } = useAuth();
   return (
     <nav className="h-[70px] flex bg-slate-600">
-      <div className="container mx-auto w-[90%] flex justify-start items-center px-2">
+      <div className="container mx-auto w-[90vw] flex justify-start items-center px-2">
         <div className="flex-[30%]">
           <h1 className="text-4xl font-bold">ShopVista</h1>
         </div>

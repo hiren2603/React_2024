@@ -10,8 +10,8 @@ function ProductDetails() {
 
   return (
     <div className="flex flex-row gap-4 justify-start h-full mt-2 rounded p-2">
-      <div className="w-[40vw]">
-        <div className="flex w-full h-[500px] bg-white">
+      <div className="w-full">
+        <div className="flex w-full h-full bg-white ">
           <ProductImage
             images={product.images}
             current={currentImage}

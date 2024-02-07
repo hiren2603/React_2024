@@ -80,3 +80,21 @@ export const pagination = async()=>{
     }
 
 } 
+
+export const fetchAllCategories = async()=>{
+    try {
+        const response = await fetch(`${api}/products/categories`)
+        return response.json()
+    } catch (error) {
+        return error
+    }
+}
+
+export const fetchProductsByCategory = async(category)=>{
+    try {
+        const response = await fetch(`${api}/products/category/${category}`)
+        return response.json()
+    } catch (error) {
+        return error
+    }
+}

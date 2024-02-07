@@ -11,6 +11,8 @@ import TableFooter from "./TableFooter"
 import ProductImage from "./ProductImage"
 import ProductButton from "./ProductButton"
 import ProductContent from "./ProductContent"
+import ProductFilter from "./ProductFilter"
+
 
 
 
@@ -29,5 +31,6 @@ export {
     TableFooter,
     ProductImage, 
     ProductButton, 
-    ProductContent
+    ProductContent,
+    ProductFilter
 }
