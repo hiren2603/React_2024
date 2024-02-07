@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AuthProvider } from "./hooks/useAuth.jsx";
+import { AuthProvider, useAuth } from "./hooks/useAuth.jsx";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -44,6 +44,7 @@ const router = createBrowserRouter(
 
 function App() {
   const [loading, setLoading] = useState(false);
+  const [auth, setAuth] = useState(false);
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -52,10 +53,6 @@ function App() {
     JSON.parse(localStorage.getItem("token")) || ""
   );
 
-  // useEffect(() => {
-  //   console.log(`token: ${token}`);
-  //   setToken(localStorage.getItem("token"));
-  // }, []);
   const login = async () => {
     const response = await LoginUser(username, password);
     const result = response.json();
@@ -79,6 +76,8 @@ function App() {
         setToken,
         login,
         logout,
+        auth,
+        setAuth,
       }}
     >
       <RouterProvider router={router}></RouterProvider>
