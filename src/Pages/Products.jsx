@@ -47,11 +47,11 @@ function Products() {
           </Fragment>
         ))
       )}
-      {products.map((product) => (
+      {/* {products.map((product) => (
         <Fragment key={product.id}>
           <Product product={product} />
         </Fragment>
-      ))}
+      ))} */}
     </>
   );
 }

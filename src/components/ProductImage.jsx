@@ -5,7 +5,7 @@ import { BagIcon, CartIcon } from "../assets/icons";
 function ProductImage({ images, current, onSetCurrent }) {
   return (
     <>
-      <div className="flex-[15%] flex items-center flex-col gap-2 justify-start p-2 rounded">
+      <div className="flex-[10%] flex items-center flex-col gap-2 justify-start p-2 rounded">
         {images.map((item) => (
           <div
             key={item}
@@ -16,7 +16,7 @@ function ProductImage({ images, current, onSetCurrent }) {
           </div>
         ))}
       </div>
-      <div className="flex-[85%] flex shadow-gray-700 rounded">
+      <div className="flex-[90%] max-h-[450px] flex shadow-gray-700 rounded">
         <img
           src={current}
           alt="current  "

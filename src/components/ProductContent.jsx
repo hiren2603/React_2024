@@ -1,5 +1,7 @@
 import React from "react";
 import Rating from "./Rating";
+import ProductButton from "./ProductButton";
+import { BagIcon, CartIcon } from "../assets/icons";
 
 function ProductContent({ product }) {
   const actualPrice = Math.round(
@@ -40,6 +42,20 @@ function ProductContent({ product }) {
       <div className="flex center gap-4 text-lg p-4">
         <h1>Description: </h1>
         <h1>{product.description}</h1>
+      </div>
+      <div className="flex w-full gap-2 pt-3">
+        <ProductButton
+          label="Add To Cart"
+          link="/cart"
+          icon={<CartIcon />}
+          bgColor="bg-blue-500 hover:bg-blue-600"
+        />
+        <ProductButton
+          label="Buy Now"
+          link="/"
+          icon={<BagIcon />}
+          bgColor="bg-orange-600 hover:bg-orange-700"
+        />
       </div>
     </div>
   );

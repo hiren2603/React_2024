@@ -18,20 +18,6 @@ function ProductDetails() {
             onSetCurrent={setCurrentImage}
           />
         </div>
-        <div className="flex w-full gap-2 pt-3">
-          <ProductButton
-            label="Add To Cart"
-            link="/cart"
-            icon={<CartIcon />}
-            bgColor="bg-blue-500 hover:bg-blue-600"
-          />
-          <ProductButton
-            label="Buy Now"
-            link="/"
-            icon={<BagIcon />}
-            bgColor="bg-orange-600 hover:bg-orange-700"
-          />
-        </div>
       </div>
       <ProductContent product={product} />
     </div>
